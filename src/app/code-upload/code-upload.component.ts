@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder,ValidatorFn,AbstractControl,ValidationErrors } from '@angular/forms';
 import {MatDatepicker, MatDatepickerModule} from '@angular/material/datepicker';
 
@@ -14,7 +14,9 @@ export class CodeUploadComponent implements OnInit {
   public hours: number[];
   public minutes: number[];
   public dates: {value: number, desc: string}[];
-  constructor(private fb: FormBuilder, private http:HttpClient) { 
+  @Output() onSubmit = new EventEmitter<{email: string, code: string,purchase_time: string}>();
+  constructor(private fb: FormBuilder) { 
+
     this.hours = new Array();
     for (let i = 0; i < 24; i++) {
       this.hours.push(i);
@@ -59,9 +61,7 @@ export class CodeUploadComponent implements OnInit {
   }
   sendCode(){
     const req={email:this.email?.value, code:this.code?.value, purchase_time:this.getFormatedPurchaseTime()}
-    this.http.post('https://ncp-dummy.staging.moonproject.io/api/torma-levente/code/upload',req).subscribe((res) =>{
-      console.log(res);
-    })
+    this.onSubmit.emit(req);
   }
   getFormatedPurchaseTime() {
     const date =new Date(parseInt(this.purchaseday?.value));
@@ -83,6 +83,7 @@ export class CodeUploadComponent implements OnInit {
   }
   ngOnInit(): void {
   }
+
   get email(){
     return this.codeUpload.get("email");
   }

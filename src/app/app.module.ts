@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -10,10 +10,13 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatSelectModule} from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './register/register.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 @NgModule({
   declarations: [
     AppComponent,
-    CodeUploadComponent
+    CodeUploadComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -25,9 +28,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatNativeDateModule,
     MatDatepickerModule,
     MatSelectModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCheckboxModule
   ],
-  providers: [],
+  providers: [
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

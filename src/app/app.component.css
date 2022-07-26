@@ -1,0 +1,32 @@
+.outer{
+    display: grid;
+    justify-content: center;
+    position:absolute;
+    bottom: auto;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(138, 144, 144, 0.575);
+}
+.inner{
+    position: absolute;
+    top: 15%;
+    width: 20%;
+    left:40%;
+    right:40%;
+    height: 100px;
+    margin:auto;
+    border-radius: 20px;
+    padding: 10px;
+    background-color:aliceblue;
+}
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15%;
+}
+p{
+    text-align: center;
+    padding-top:10px;
+}

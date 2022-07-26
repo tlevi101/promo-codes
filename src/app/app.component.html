@@ -1,4 +1,10 @@
-<h1>Fő oldal</h1>
-<code-upload> </code-upload>
-
-    
+<code-upload (onSubmit)="recieveCodeUpload($event)"> </code-upload>
+<app-register (onSubmit)="recieveRegisterReq($event)"> </app-register>
+<div class="result outer" *ngIf="showResult">
+    <div class="inner">
+            <p>{{result}}</p>
+            <div class="center">
+                    <button mat-raised-button (click)="hideResult()">Oké</button>   
+            </div>
+    </div>
+</div>

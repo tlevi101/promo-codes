@@ -1,0 +1,20 @@
+<div class="outer" *ngIf="showME">
+        <h2>Regiszráció</h2>
+        <form  [formGroup]="register" (ngSubmit)="submitRegisterReq()">
+                <mat-form-field >
+                        <input matInput type="email" name="email" placeholder="Email" formControlName="email">
+                </mat-form-field>
+                <mat-form-field>
+                        <input matInput type="text" name="name" placeholder="Név" formControlName="name">
+                        <mat-error *ngIf="name?.invalid && name?.touched">
+                                Hiányzó vagy nem megfelelő név!
+                        </mat-error>
+                </mat-form-field>
+                
+                <mat-checkbox formControlName="agreement">Elolvastam és elfogadom a játékszabályzatot!</mat-checkbox>
+                <mat-error *ngIf="agreement?.invalid && agreement?.touched">
+                        Beleegyezés szükséges!
+                </mat-error>
+                <button matInput mat-raised-button [disabled]="register.invalid" type="submit">Regiszráció</button>
+        </form>
+</div>

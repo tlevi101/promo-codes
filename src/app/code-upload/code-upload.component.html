@@ -1,50 +1,54 @@
-<form [formGroup]="codeUpload" layout="row">
-        <mat-form-field >
-                <input matInput type="email" name="email" placeholder="Email" formControlName="email" >
-                <mat-error *ngIf="email?.invalid && email?.touched">
-                        Hiányzó vagy nem megfelelő email!
-                </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-                <input matInput type="text" name="code" placeholder="Code" formControlName="code">
-                <mat-error *ngIf="code?.getError('required') && code?.touched">
-                        Kód megadása kötelező!
-                </mat-error>
-                <mat-error *ngIf="(code?.getError('minlength') || code?.getError('maxlength'))&& code?.touched">
-                        Pontosan 8 karakteres kód kell!
-                </mat-error>
-                <mat-error *ngIf="code?.getError('pattern') && code?.touched">
-                        Kód csak angol betűket és szamokat tartalmazhat!
-                </mat-error>
-        </mat-form-field>
-        <div>
-                <mat-form-field id="day">
-                        <mat-label>Nap</mat-label>
-                        <mat-select formControlName="purchaseday" ngModel={{dates[0].value}}>
-                                <mat-option *ngFor="let date of dates" value={{date.value}}>{{date.desc}}</mat-option> 
-                        </mat-select>
-                        <mat-error *ngIf="purchaseday?.invalid && purchaseday?.touched">
-                                Vásárlás napjának megadása kötelező!
+<div class="outer">
+        <form [formGroup]="codeUpload" layout="row" (ngSubmit)="sendCode()">
+                <mat-form-field >
+                        <input matInput type="email" name="email" placeholder="Email" formControlName="email" >
+                        <mat-error *ngIf="email?.invalid && email?.touched">
+                                Hiányzó vagy nem megfelelő email!
                         </mat-error>
                 </mat-form-field>
-                <mat-form-field id="hour" >
-                        <mat-label>Óra</mat-label>
-                        <mat-select formControlName="hour">
-                                <mat-option *ngFor="let _hour of hours" value={{_hour}} >{{_hour}}</mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="hour?.invalid && hour?.touched">
-                                Vásárlás órájának megadása kötelező!
+                <mat-form-field>
+                        <input matInput type="text" name="code" placeholder="Code" formControlName="code">
+                        <mat-error *ngIf="code?.getError('required') && code?.touched">
+                                Kód megadása kötelező!
+                        </mat-error>
+                        <mat-error *ngIf="(code?.getError('minlength') || code?.getError('maxlength'))&& code?.touched">
+                                Pontosan 8 karakteres kód kell!
+                        </mat-error>
+                        <mat-error *ngIf="code?.getError('pattern') && code?.touched">
+                                Kód csak angol betűket és szamokat tartalmazhat!
                         </mat-error>
                 </mat-form-field>
-                <mat-form-field id="minute">
-                        <mat-label>Perc</mat-label>
-                        <mat-select formControlName="minute">
-                                <mat-option *ngFor="let _minute of minutes" value={{_minute}} >{{_minute}}</mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="minute?.invalid && minute?.touched">
-                                Vásárlás percének megadása kötelező!
-                        </mat-error>
-                </mat-form-field>
-        </div>
-        <button mat-raised-button [disabled]="codeUpload.invalid" type="submit" (click)="sendCode()">Kész</button>
-</form>
+                <div>
+                        <mat-form-field id="day">
+                                <mat-label>Nap</mat-label>
+                                <mat-select formControlName="purchaseday" ngModel={{dates[0].value}}>
+                                        <mat-option *ngFor="let date of dates" value={{date.value}}>{{date.desc}}</mat-option> 
+                                </mat-select>
+                                <mat-error *ngIf="purchaseday?.invalid && purchaseday?.touched">
+                                        Vásárlás napjának megadása kötelező!
+                                </mat-error>
+                        </mat-form-field>
+                        <mat-form-field id="hour" >
+                                <mat-label>Óra</mat-label>
+                                <mat-select formControlName="hour">
+                                        <mat-option *ngFor="let _hour of hours" value={{_hour}} >{{_hour}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="hour?.invalid && hour?.touched">
+                                        Vásárlás órájának megadása kötelező!
+                                </mat-error>
+                        </mat-form-field>
+                        <mat-form-field id="minute">
+                                <mat-label>Perc</mat-label>
+                                <mat-select formControlName="minute">
+                                        <mat-option *ngFor="let _minute of minutes" value={{_minute}} >{{_minute}}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="minute?.invalid && minute?.touched">
+                                        Vásárlás percének megadása kötelező!
+                                </mat-error>
+                        </mat-form-field>
+                </div>
+                <button mat-raised-button [disabled]="codeUpload.invalid" type="submit">Kész</button>
+        </form>
+</div>
+
+
