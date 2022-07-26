@@ -1,4 +1,4 @@
-import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { CodeUploadComponent } from './code-upload/code-upload.component';

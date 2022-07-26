@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder,ValidatorFn,AbstractControl,ValidationErrors } from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
