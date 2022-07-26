@@ -12,10 +12,10 @@ export class AppComponent implements AfterViewInit{
   title='promo-codes';
   @ViewChild(RegisterComponent) register:RegisterComponent;
   @ViewChild(CodeUploadComponent) codeUpload:CodeUploadComponent;
-  result = "még nincs";
+  result = "";
   showResult = false;
   codeUploadReq: any;
-  private hr= new HttpHeaders().set('Content-Type', 'application/json')
+  private hr= new HttpHeaders().set('Content-Type', 'application/json');
   constructor(private http:HttpClient){
     this.register = new RegisterComponent(new FormBuilder());
     this.codeUpload = new CodeUploadComponent(new FormBuilder());
@@ -49,11 +49,10 @@ export class AppComponent implements AfterViewInit{
   }
   recieveRegisterReq($event:any){
     console.log($event);
-    this.http.post('https://dummy-ncp.moonproject.io/api/torma-levente/user/register',JSON.stringify($event),{headers:this.hr}).subscribe((res:any)=>{
+    this.http.post('https://ncp-dummy.staging.moonproject.io/api/torma-levente/user/register',JSON.stringify($event),{headers:this.hr}).subscribe((res:any)=>{
       this.register.showME=false;
       this.sendCodeReq(this.codeUploadReq);
     }, (error) => {
-      console.log("asd",$event);
       console.log(error);
     });
   }
