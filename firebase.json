@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "tlevi101promo",
     "public": "dist/promo-codes",
     "ignore": [
       "firebase.json",
