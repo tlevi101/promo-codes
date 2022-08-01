@@ -29,7 +29,7 @@ export class CodeUploadComponent implements OnInit {
     this.dates = new Array();
     const date = new Date();
     for (let i = 6; i < date.getMonth()+1; i++) {
-      for (let j = 0; j < date.getDate(); j++) {
+      for (let j = 0; j < new Date(2022,i, i==7? date.getDate():0).getDate(); j++) {
         let obj={value:new Date(2022,i,j+1).getTime(), desc:monthNames[i]+', '+ (j+1)};
         this.dates.push(obj)
       }
